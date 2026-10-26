@@ -1,19 +1,591 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patas que Transformam</title>
+
+    <meta name="description"
+          content="Patas que Transformam: uma organização dedicada ao resgate, cuidado e adoção responsável de animais.">
+
+    <meta name="theme-color" content="#285943">
+
+    <title>Patas que Transformam | Resgate e Adoção Animal</title>
+
+    <!-- Ícone da página -->
+    <link rel="icon" href="assets/icons/pata.png">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
 </head>
+
 <body>
 
-    <div class="cabecalho">
-        <header>
-            <h1>Patas que Transformam</h1>
-        </header>
-    </div>
-    
+    <!-- ================= CABEÇALHO ================= -->
 
-    
+    <header class="header" id="inicio">
+        <div class="container header-container">
+
+            <a href="index.html" class="logo" aria-label="Patas que Transformam - Início">
+                <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                <span class="logo-text">
+                    Patas que
+                    <strong>Transformam</strong>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menu de navegação"
+                aria-controls="nav-menu"
+                aria-expanded="false"
+                type="button">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+            <nav class="nav-menu" id="nav-menu" aria-label="Navegação principal">
+
+                <a href="index.html" class="nav-link active">Início</a>
+
+                <a href="adocao.html" class="nav-link">Adoção</a>
+
+                <a href="sobre.html" class="nav-link">Sobre nós</a>
+
+                <a href="como-ajudar.html" class="nav-link">Como ajudar</a>
+
+                <a href="contato.html" class="nav-link">Contato</a>
+
+                <a href="adocao.html" class="btn btn-primary nav-cta">
+                    Adote um amigo
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ================= APRESENTAÇÃO ================= -->
+
+        <section class="hero">
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <span class="section-tag">
+                        <span aria-hidden="true">💚</span>
+                        Amor que transforma vidas
+                    </span>
+
+                    <h1>
+                        Todo animal merece
+                        <span>uma segunda chance.</span>
+                    </h1>
+
+                    <p>
+                        Resgatamos animais em situação de abandono,
+                        oferecemos cuidado e buscamos famílias que
+                        transformem suas histórias em finais felizes.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="adocao.html" class="btn btn-primary">
+                            Quero adotar
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a href="como-ajudar.html" class="btn btn-outline">
+                            Quero ajudar
+                        </a>
+
+                    </div>
+
+                    <div class="hero-trust">
+
+                        <div class="trust-icon" aria-hidden="true">🐶</div>
+
+                        <div>
+                            <strong>Pequenas atitudes, grandes mudanças.</strong>
+                            <p>Juntos, podemos salvar mais vidas.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1000&q=85"
+                        alt="Cachorro olhando para a câmera"
+                        fetchpriority="high">
+
+                    <div class="hero-image-card">
+
+                        <span class="floating-icon" aria-hidden="true">❤️</span>
+
+                        <div>
+                            <strong>Adote, não compre.</strong>
+                            <p>O amor também está esperando por você.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= INDICADORES ================= -->
+
+        <section class="impact" aria-label="Nosso propósito">
+
+            <div class="container impact-grid">
+
+                <article class="impact-item">
+                    <span class="impact-icon" aria-hidden="true">🐾</span>
+                    <h2>Resgate</h2>
+                    <p>Acolhimento para animais em situação de risco.</p>
+                </article>
+
+                <article class="impact-item">
+                    <span class="impact-icon" aria-hidden="true">🩺</span>
+                    <h2>Cuidado</h2>
+                    <p>Carinho, alimentação e atenção veterinária.</p>
+                </article>
+
+                <article class="impact-item">
+                    <span class="impact-icon" aria-hidden="true">🏡</span>
+                    <h2>Adoção</h2>
+                    <p>Conexões entre animais e famílias responsáveis.</p>
+                </article>
+
+                <article class="impact-item">
+                    <span class="impact-icon" aria-hidden="true">💚</span>
+                    <h2>Esperança</h2>
+                    <p>Mais oportunidades para uma vida feliz.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANIMAIS ================= -->
+
+        <section class="pets section-padding" id="animais">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-tag">Conheça nossos amigos</span>
+
+                        <h2>
+                            Um novo amigo pode
+                            <span>estar esperando por você.</span>
+                        </h2>
+                    </div>
+
+                    <a href="adocao.html" class="text-link">
+                        Ver todos os animais →
+                    </a>
+
+                </div>
+
+                <div class="pets-grid">
+
+                    <!-- Animal 1 -->
+                    <article class="pet-card">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=700&q=85"
+                                alt="Cachorro de pelagem dourada"
+                                loading="lazy">
+
+                            <span class="pet-status">Disponível para adoção</span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Amigo</h3>
+                                <span aria-hidden="true">🐶</span>
+                            </div>
+
+                            <p>
+                                Um companheiro carinhoso que merece
+                                encontrar uma família.
+                            </p>
+
+                            <a href="adocao.html" class="btn btn-outline btn-full">
+                                Conheça o Amigo
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Animal 2 -->
+                    <article class="pet-card">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=700&q=85"
+                                alt="Gato olhando atentamente para a câmera"
+                                loading="lazy">
+
+                            <span class="pet-status">Disponível para adoção</span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Luna</h3>
+                                <span aria-hidden="true">🐱</span>
+                            </div>
+
+                            <p>
+                                Uma gatinha que pode trazer muito
+                                carinho e alegria para seu lar.
+                            </p>
+
+                            <a href="adocao.html" class="btn btn-outline btn-full">
+                                Conheça a Luna
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Animal 3 -->
+                    <article class="pet-card">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=700&q=85"
+                                alt="Cachorro de pequeno porte"
+                                loading="lazy">
+
+                            <span class="pet-status">Disponível para adoção</span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Bolinha</h3>
+                                <span aria-hidden="true">🐕</span>
+                            </div>
+
+                            <p>
+                                Um amigo de quatro patas em busca
+                                de um lar cheio de amor.
+                            </p>
+
+                            <a href="adocao.html" class="btn btn-outline btn-full">
+                                Conheça o Bolinha
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <p class="pets-disclaimer">
+                    Os nomes e perfis apresentados são exemplos ilustrativos.
+                    Substitua-os pelos animais reais da organização.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOSSA MISSÃO ================= -->
+
+        <section class="mission section-padding" id="missao">
+
+            <div class="container mission-container">
+
+                <div class="mission-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1000&q=85"
+                        alt="Cachorro recebendo carinho"
+                        loading="lazy">
+
+                </div>
+
+                <div class="mission-content">
+
+                    <span class="section-tag">Nossa missão</span>
+
+                    <h2>
+                        Mais do que resgatar,
+                        queremos
+                        <span>transformar histórias.</span>
+                    </h2>
+
+                    <p>
+                        Acreditamos que todo animal merece viver com
+                        segurança, dignidade e carinho. Por isso,
+                        trabalhamos para oferecer novas oportunidades
+                        a cães e gatos em situação de abandono.
+                    </p>
+
+                    <p>
+                        Nosso propósito é unir pessoas dispostas a ajudar
+                        e animais que precisam de uma nova chance,
+                        incentivando a adoção responsável e a conscientização.
+                    </p>
+
+                    <a href="sobre.html" class="btn btn-primary">
+                        Conheça nossa história →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMO AJUDAR ================= -->
+
+        <section class="help section-padding">
+
+            <div class="container">
+
+                <div class="section-heading section-heading-center">
+
+                    <span class="section-tag">Faça parte dessa causa</span>
+
+                    <h2>
+                        Você também pode
+                        <span>fazer a diferença.</span>
+                    </h2>
+
+                    <p>
+                        Não é preciso fazer tudo. Cada pequena contribuição
+                        pode ajudar a transformar uma vida.
+                    </p>
+
+                </div>
+
+                <div class="help-grid">
+
+                    <article class="help-card">
+
+                        <span class="help-icon" aria-hidden="true">🏠</span>
+
+                        <h3>Adote</h3>
+
+                        <p>
+                            Ofereça um lar seguro e amoroso a um animal
+                            que precisa de uma família.
+                        </p>
+
+                        <a href="adocao.html" class="text-link">
+                            Quero adotar →
+                        </a>
+
+                    </article>
+
+                    <article class="help-card">
+
+                        <span class="help-icon" aria-hidden="true">🤝</span>
+
+                        <h3>Seja voluntário</h3>
+
+                        <p>
+                            Doe seu tempo e suas habilidades para ajudar
+                            no cuidado e na proteção dos animais.
+                        </p>
+
+                        <a href="como-ajudar.html" class="text-link">
+                            Quero participar →
+                        </a>
+
+                    </article>
+
+                    <article class="help-card">
+
+                        <span class="help-icon" aria-hidden="true">🎁</span>
+
+                        <h3>Faça uma doação</h3>
+
+                        <p>
+                            Ajude com recursos e itens necessários
+                            para o acolhimento dos animais.
+                        </p>
+
+                        <a href="como-ajudar.html" class="text-link">
+                            Quero contribuir →
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CHAMADA FINAL ================= -->
+
+        <section class="cta-section">
+
+            <div class="container cta-container">
+
+                <div class="cta-content">
+
+                    <span class="section-tag">Uma atitude muda tudo</span>
+
+                    <h2>
+                        O próximo final feliz
+                        pode começar com você.
+                    </h2>
+
+                    <p>
+                        Ajude-nos a construir um futuro com mais respeito,
+                        cuidado e amor pelos animais.
+                    </p>
+
+                    <div class="cta-actions">
+
+                        <a href="adocao.html" class="btn btn-light">
+                            Encontrar meu amigo
+                        </a>
+
+                        <a href="como-ajudar.html" class="btn btn-cta-outline">
+                            Quero ajudar
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="cta-decoration" aria-hidden="true">
+                    🐾
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= RODAPÉ ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo footer-logo">
+
+                    <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                    <span class="logo-text">
+                        Patas que
+                        <strong>Transformam</strong>
+                    </span>
+
+                </a>
+
+                <p>
+                    Cuidar, proteger e transformar vidas.
+                    Juntos, podemos fazer a diferença na vida dos animais.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Navegação</h2>
+
+                <a href="index.html">Início</a>
+                <a href="adocao.html">Adoção</a>
+                <a href="sobre.html">Sobre nós</a>
+                <a href="como-ajudar.html">Como ajudar</a>
+                <a href="contato.html">Contato</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Faça parte</h2>
+
+                <a href="adocao.html">Adote um animal</a>
+                <a href="como-ajudar.html">Seja voluntário</a>
+                <a href="como-ajudar.html">Ajude a organização</a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h2>Entre em contato</h2>
+
+                <p>
+                    Quer ajudar ou saber mais sobre nosso trabalho?
+                    Entre em contato conosco.
+                </p>
+
+                <a href="contato.html" class="text-link">
+                    Fale conosco →
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+
+            <p>
+                &copy; <span id="current-year">2026</span>
+                Patas que Transformam. Todos os direitos reservados.
+            </p>
+
+            <a href="#inicio">Voltar ao início ↑</a>
+
+        </div>
+
+    </footer>
+
 </body>
 </html>

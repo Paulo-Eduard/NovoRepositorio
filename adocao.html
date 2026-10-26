@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Conheça os animais resgatados pela Patas que Transformam e encontre um companheiro para adoção responsável.">
+
+    <meta name="theme-color" content="#285943">
+
+    <title>Adoção de Animais | Patas que Transformam</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" href="assets/icons/pata.png">
+
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/adocao.js" defer></script>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="index.html" class="logo"
+               aria-label="Patas que Transformam - Início">
+
+                <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                <span class="logo-text">
+                    Patas que
+                    <strong>Transformam</strong>
+                </span>
+
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Abrir menu de navegação"
+                aria-controls="nav-menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+            <nav class="nav-menu" id="nav-menu"
+                 aria-label="Navegação principal">
+
+                <a href="index.html" class="nav-link">Início</a>
+
+                <a href="adocao.html"
+                   class="nav-link active"
+                   aria-current="page">Adoção</a>
+
+                <a href="sobre.html" class="nav-link">Sobre nós</a>
+
+                <a href="como-ajudar.html" class="nav-link">Como ajudar</a>
+
+                <a href="contato.html" class="nav-link">Contato</a>
+
+                <a href="#animais" class="btn btn-primary nav-cta">
+                    Encontrar um amigo
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- APRESENTAÇÃO DA PÁGINA -->
+
+        <section class="page-hero adoption-hero">
+
+            <div class="container page-hero-content">
+
+                <span class="section-tag">
+                    <span aria-hidden="true">💚</span>
+                    Adoção responsável
+                </span>
+
+                <h1>
+                    Seu próximo melhor amigo
+                    <span>pode estar aqui.</span>
+                </h1>
+
+                <p>
+                    Cada animal tem uma história e um jeito especial
+                    de demonstrar amor. Conheça nossos amigos e
+                    descubra quem pode fazer parte da sua família.
+                </p>
+
+                <a href="#animais" class="btn btn-primary">
+                    Conhecer os animais ↓
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- MENSAGEM SOBRE A ADOÇÃO -->
+
+        <section class="adoption-message">
+
+            <div class="container adoption-message-container">
+
+                <div class="adoption-message-icon" aria-hidden="true">
+                    🏡
+                </div>
+
+                <div>
+                    <h2>Adotar é assumir um compromisso de amor.</h2>
+
+                    <p>
+                        Um animal precisa de tempo, alimentação,
+                        cuidados veterinários, segurança e carinho.
+                        A adoção responsável começa com a certeza
+                        de que você poderá oferecer tudo isso.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LISTAGEM DE ANIMAIS -->
+
+        <section class="pets section-padding" id="animais">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-tag">
+                            Conheça nossos animais
+                        </span>
+
+                        <h2>
+                            Encontre seu
+                            <span>companheiro de vida.</span>
+                        </h2>
+
+                        <p>
+                            Conheça alguns dos animais que estão
+                            em busca de um lar responsável.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTROS -->
+
+                <div class="adoption-filters"
+                     role="group"
+                     aria-label="Filtrar animais por espécie">
+
+                    <button
+                        type="button"
+                        class="filter-btn active"
+                        data-filter="todos"
+                        aria-pressed="true">
+
+                        Todos
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="cachorro"
+                        aria-pressed="false">
+
+                        🐶 Cachorros
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="gato"
+                        aria-pressed="false">
+
+                        🐱 Gatos
+
+                    </button>
+
+                </div>
+
+
+                <!-- CARDS DOS ANIMAIS -->
+
+                <div class="pets-grid" id="pets-grid">
+
+
+                    <!-- ANIMAL 1 -->
+
+                    <article class="pet-card" data-species="cachorro">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=700&q=85"
+                                alt="Cachorro de pelagem dourada"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Amigo</h3>
+                                <span aria-hidden="true">🐶</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Carinhoso, companheiro e pronto para
+                                conhecer uma nova família.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Cão</span>
+                                <span>❤️ Companheiro</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Amigo"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANIMAL 2 -->
+
+                    <article class="pet-card" data-species="gato">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=700&q=85"
+                                alt="Gato observando a câmera"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Luna</h3>
+                                <span aria-hidden="true">🐱</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Uma gatinha que procura um lar tranquilo,
+                                seguro e cheio de carinho.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Gata</span>
+                                <span>💚 Companheira</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Luna"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANIMAL 3 -->
+
+                    <article class="pet-card" data-species="cachorro">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=700&q=85"
+                                alt="Cachorro de pequeno porte"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Bolinha</h3>
+                                <span aria-hidden="true">🐕</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Um amigo que merece crescer e viver
+                                em um ambiente acolhedor.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Cão</span>
+                                <span>🏡 Procura um lar</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Bolinha"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANIMAL 4 -->
+
+                    <article class="pet-card" data-species="gato">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=700&q=85"
+                                alt="Gato de pelagem clara"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Mel</h3>
+                                <span aria-hidden="true">🐱</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Uma gatinha em busca de alguém
+                                disposto a compartilhar bons momentos.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Gata</span>
+                                <span>💚 Nova chance</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Mel"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANIMAL 5 -->
+
+                    <article class="pet-card" data-species="cachorro">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=85"
+                                alt="Cachorro olhando para a câmera"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Toby</h3>
+                                <span aria-hidden="true">🐶</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Um cão à procura de uma família
+                                que o acolha com responsabilidade.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Cão</span>
+                                <span>❤️ Novo começo</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Toby"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANIMAL 6 -->
+
+                    <article class="pet-card" data-species="gato">
+
+                        <div class="pet-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=700&q=85"
+                                alt="Gato com expressão curiosa"
+                                loading="lazy">
+
+                            <span class="pet-status">
+                                Disponível para adoção
+                            </span>
+
+                        </div>
+
+                        <div class="pet-info">
+
+                            <div class="pet-title">
+                                <h3>Simba</h3>
+                                <span aria-hidden="true">🐱</span>
+                            </div>
+
+                            <p class="pet-description">
+                                Um gatinho que merece cuidado,
+                                proteção e uma família amorosa.
+                            </p>
+
+                            <div class="pet-details">
+                                <span>🐾 Gato</span>
+                                <span>🏡 Procura um lar</span>
+                            </div>
+
+                            <a
+                                href="contato.html?animal=Simba"
+                                class="btn btn-primary btn-full">
+
+                                Tenho interesse
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MENSAGEM QUANDO NÃO HÁ RESULTADOS -->
+
+                <p id="no-pets-message" hidden aria-live="polite">
+                    Nenhum animal encontrado nessa categoria.
+                </p>
+
+                <p class="pets-disclaimer">
+                    Os nomes, perfis e disponibilidades desta página
+                    são exemplos ilustrativos. Confirme as informações
+                    com a organização antes de divulgar os animais.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ETAPAS DA ADOÇÃO -->
+
+        <section class="adoption-process section-padding">
+
+            <div class="container">
+
+                <div class="section-heading section-heading-center">
+
+                    <span class="section-tag">
+                        Como funciona
+                    </span>
+
+                    <h2>
+                        Adotar é mais simples
+                        <span>quando fazemos juntos.</span>
+                    </h2>
+
+                    <p>
+                        Conheça as etapas para oferecer um novo lar
+                        a um animal resgatado.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <article class="process-card">
+
+                        <span class="process-number">01</span>
+
+                        <span class="process-icon" aria-hidden="true">
+                            🔎
+                        </span>
+
+                        <h3>Escolha seu amigo</h3>
+
+                        <p>
+                            Conheça os animais e descubra qual deles
+                            combina com sua realidade e rotina.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <span class="process-number">02</span>
+
+                        <span class="process-icon" aria-hidden="true">
+                            💬
+                        </span>
+
+                        <h3>Entre em contato</h3>
+
+                        <p>
+                            Converse com a organização para conhecer
+                            o animal e esclarecer suas dúvidas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <span class="process-number">03</span>
+
+                        <span class="process-icon" aria-hidden="true">
+                            📋
+                        </span>
+
+                        <h3>Faça a avaliação</h3>
+
+                        <p>
+                            Siga o processo de adoção responsável
+                            e as orientações da organização.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <span class="process-number">04</span>
+
+                        <span class="process-icon" aria-hidden="true">
+                            ❤️
+                        </span>
+
+                        <h3>Prepare seu lar</h3>
+
+                        <p>
+                            Prepare um ambiente seguro e acolhedor
+                            para receber seu novo companheiro.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHAMADA FINAL -->
+
+        <section class="cta-section">
+
+            <div class="container cta-container">
+
+                <div class="cta-content">
+
+                    <span class="section-tag">
+                        Faça parte dessa transformação
+                    </span>
+
+                    <h2>
+                        Talvez você esteja procurando
+                        por ele. E ele, por você.
+                    </h2>
+
+                    <p>
+                        Se não puder adotar neste momento, você também
+                        pode ajudar divulgando os animais e apoiando
+                        o trabalho de resgate.
+                    </p>
+
+                    <div class="cta-actions">
+
+                        <a href="#animais" class="btn btn-light">
+                            Encontrar um amigo
+                        </a>
+
+                        <a href="como-ajudar.html"
+                           class="btn btn-cta-outline">
+
+                            Outras formas de ajudar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="cta-decoration" aria-hidden="true">
+                    🐾
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo footer-logo">
+
+                    <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                    <span class="logo-text">
+                        Patas que
+                        <strong>Transformam</strong>
+                    </span>
+
+                </a>
+
+                <p>
+                    Cuidar, proteger e transformar vidas.
+                    Juntos, podemos fazer a diferença.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h2>Navegação</h2>
+
+                <a href="index.html">Início</a>
+                <a href="adocao.html">Adoção</a>
+                <a href="sobre.html">Sobre nós</a>
+                <a href="como-ajudar.html">Como ajudar</a>
+                <a href="contato.html">Contato</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h2>Participe</h2>
+
+                <a href="como-ajudar.html">Seja voluntário</a>
+                <a href="como-ajudar.html">Faça uma doação</a>
+                <a href="contato.html">Fale conosco</a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h2>Adote com responsabilidade</h2>
+
+                <p>
+                    A adoção é um compromisso de longo prazo.
+                    Ofereça tempo, cuidado e segurança ao seu novo amigo.
+                </p>
+
+                <a href="contato.html" class="text-link">
+                    Entre em contato →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                &copy; <span id="current-year">2026</span>
+                Patas que Transformam. Todos os direitos reservados.
+            </p>
+
+            <a href="#topo">Voltar ao início ↑</a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

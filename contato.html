@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Entre em contato com a Patas que Transformam para adoção, voluntariado, doações e proteção animal."
+    >
+
+    <title>Contato | Patas que Transformam</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="index.html" class="logo" aria-label="Patas que Transformam - Início">
+                <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                <span class="logo-text">
+                    Patas que Transformam
+                    <small>Amor que muda vidas</small>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="nav-menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <nav class="nav-menu" id="nav-menu" aria-label="Navegação principal">
+                <a class="nav-link" href="index.html">Início</a>
+                <a class="nav-link" href="adocao.html">Adoção</a>
+                <a class="nav-link" href="sobre.html">Sobre nós</a>
+                <a class="nav-link" href="como-ajudar.html">Como ajudar</a>
+                <a class="nav-link active" href="contato.html" aria-current="page">Contato</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- APRESENTAÇÃO -->
+        <section class="page-hero">
+            <div class="container">
+
+                <span class="section-tag">Estamos aqui para ajudar</span>
+
+                <h1>Entre em contato conosco</h1>
+
+                <p>
+                    Tem alguma dúvida, deseja adotar um animal ou quer fazer
+                    parte da nossa missão? Escolha o assunto e vamos conversar.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- OPÇÕES DE CONTATO -->
+        <section class="contact-section section-padding">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-tag">Como podemos ajudar?</span>
+
+                    <h2>Escolha o assunto da sua mensagem.</h2>
+
+                    <p>
+                        Selecione o tema que melhor representa o motivo do seu contato.
+                    </p>
+                </div>
+
+                <div class="contact-options">
+
+                    <!-- CARTÃO DE ADOÇÃO -->
+                    <article class="contact-card">
+                        <div class="contact-icon" aria-hidden="true">🏡</div>
+
+                        <h3>Adoção</h3>
+
+                        <p>
+                            Quer conhecer um animal, saber sobre o processo de
+                            adoção ou oferecer um lar responsável?
+                        </p>
+
+                        <a href="adocao.html" class="contact-card-link">
+                            Conhecer os animais →
+                        </a>
+                    </article>
+
+                    <!-- CARTÃO DE VOLUNTARIADO -->
+                    <article class="contact-card">
+                        <div class="contact-icon" aria-hidden="true">🙋</div>
+
+                        <h3>Voluntariado</h3>
+
+                        <p>
+                            Gostaria de dedicar seu tempo ou suas habilidades
+                            à proteção animal?
+                        </p>
+
+                        <a href="#formulario" class="contact-card-link"
+                           data-assunto="voluntariado">
+                            Quero participar →
+                        </a>
+                    </article>
+
+                    <!-- CARTÃO DE DOAÇÕES -->
+                    <article class="contact-card">
+                        <div class="contact-icon" aria-hidden="true">🤝</div>
+
+                        <h3>Doações e parcerias</h3>
+
+                        <p>
+                            Deseja contribuir com recursos, materiais,
+                            serviços ou uma parceria?
+                        </p>
+
+                        <a href="#formulario" class="contact-card-link"
+                           data-assunto="doacao">
+                            Vamos conversar →
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="form-section section-padding" id="formulario">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-tag">Fale conosco</span>
+
+                    <h2>Envie sua mensagem</h2>
+
+                    <p>
+                        Preencha os campos abaixo para informar como podemos ajudar.
+                    </p>
+                </div>
+
+                <div class="form-container">
+
+                    <form id="contact-form" action="#" method="post">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="nome">Nome completo *</label>
+
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    placeholder="Digite seu nome"
+                                    autocomplete="name"
+                                    minlength="2"
+                                    maxlength="100"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="seuemail@exemplo.com"
+                                    autocomplete="email"
+                                    maxlength="150"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+
+                                <input
+                                    type="tel"
+                                    id="telefone"
+                                    name="telefone"
+                                    placeholder="(83) 99999-9999"
+                                    autocomplete="tel"
+                                    maxlength="20"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assunto">Assunto *</label>
+
+                                <select id="assunto" name="assunto" required>
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="adocao">Adoção</option>
+                                    <option value="voluntariado">Voluntariado</option>
+                                    <option value="doacao">Doações</option>
+                                    <option value="lar-temporario">Lar temporário</option>
+                                    <option value="parceria">Parcerias</option>
+                                    <option value="resgate">Resgate animal</option>
+                                    <option value="duvida">Dúvidas</option>
+                                    <option value="outro">Outro assunto</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" id="animal-group" hidden>
+                            <label for="animal">Qual animal você deseja adotar?</label>
+
+                            <input
+                                type="text"
+                                id="animal"
+                                name="animal"
+                                placeholder="Digite o nome do animal"
+                                maxlength="100"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Sua mensagem *</label>
+
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                placeholder="Conte como podemos ajudar..."
+                                minlength="10"
+                                maxlength="3000"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                id="privacidade"
+                                name="privacidade"
+                                required
+                            >
+
+                            <label for="privacidade">
+                                Concordo com o uso dos meus dados para responder
+                                a esta mensagem. *
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Enviar mensagem →
+                        </button>
+
+                        <p class="form-note">
+                            Os campos marcados com * são obrigatórios.
+                        </p>
+
+                        <p
+                            id="form-status"
+                            class="form-status"
+                            role="status"
+                            aria-live="polite"
+                            hidden
+                        ></p>
+
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAMADA FINAL -->
+        <section class="cta-section">
+            <div class="container cta-container">
+
+                <h2>Juntos, podemos transformar vidas.</h2>
+
+                <p>
+                    Cada gesto de carinho ajuda a construir um futuro melhor
+                    para os animais que precisam de proteção.
+                </p>
+
+                <div class="cta-actions">
+                    <a href="adocao.html" class="btn btn-light">
+                        Quero adotar
+                    </a>
+
+                    <a href="como-ajudar.html" class="btn btn-secondary">
+                        Como ajudar
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon" aria-hidden="true">🐾</span>
+
+                        <span class="logo-text">
+                            Patas que Transformam
+                            <small>Amor que muda vidas</small>
+                        </span>
+                    </a>
+
+                    <p>
+                        Promovemos a adoção responsável, o cuidado e a proteção
+                        dos animais, incentivando uma comunidade mais solidária.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Links rápidos</h3>
+
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="adocao.html">Adoção</a></li>
+                        <li><a href="sobre.html">Sobre nós</a></li>
+                        <li><a href="como-ajudar.html">Como ajudar</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Fale conosco</h3>
+
+                    <ul class="footer-contact">
+                        <li>
+                            Use nosso formulário para entrar em contato.
+                        </li>
+
+                        <li>
+                            <a href="#formulario">Enviar uma mensagem →</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span class="current-year"></span>
+                    Patas que Transformam. Todos os direitos reservados.
+                </p>
+
+                <p>Feito com carinho pelos animais. 🐾</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+
+    <!-- Seleção automática do assunto nos cartões -->
+    <script>
+        document.querySelectorAll("[data-assunto]").forEach((link) => {
+            link.addEventListener("click", () => {
+                const assunto = document.querySelector("#assunto");
+
+                if (assunto) {
+                    assunto.value = link.dataset.assunto;
+                    assunto.dispatchEvent(new Event("change"));
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
