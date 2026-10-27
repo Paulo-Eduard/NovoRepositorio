@@ -26,6 +26,7 @@ jobs:
 
       - name: Validar arquivos HTML
         run: |
+          npm install --global npm@latest
           npm install --no-save html-validate@10
           npx html-validate "*.html"
 
