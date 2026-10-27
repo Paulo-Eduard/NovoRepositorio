@@ -1,0 +1,295 @@
+
+/* ========================================
+   PATAS QUE TRANSFORMAM
+   Arquivo: animations.css
+   Animações e efeitos visuais do site
+======================================== */
+
+/* 1. Animações principais */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes pawPrint {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) rotate(-15deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+/* 2. Entrada suave dos elementos */
+
+.header {
+    animation: fadeInDown 0.6s ease both;
+}
+
+.hero-content {
+    animation: slideInLeft 0.8s ease both;
+}
+
+.hero-image {
+    animation: slideInRight 0.8s ease both;
+}
+
+.section-heading {
+    animation: fadeInUp 0.7s ease both;
+}
+
+.impact-card,
+.help-card {
+    animation: fadeInUp 0.6s ease both;
+}
+
+.pet-card {
+    animation: fadeInUp 0.6s ease both;
+}
+
+/* 3. Efeitos nos botões */
+
+.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* 4. Cartões */
+
+.pet-card,
+.impact-card,
+.help-card,
+.value-card,
+.contact-card,
+.process-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.pet-card:hover,
+.impact-card:hover,
+.help-card:hover,
+.value-card:hover,
+.contact-card:hover,
+.process-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(35, 60, 40, 0.12);
+}
+
+/* 5. Imagens */
+
+.pet-image img,
+.hero-image img,
+.mission-image img,
+.story-image img {
+    transition: transform 0.5s ease;
+}
+
+.pet-card:hover .pet-image img,
+.hero-image:hover img,
+.mission-image:hover img,
+.story-image:hover img {
+    transform: scale(1.04);
+}
+
+/* 6. Navegação */
+
+.nav-link {
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 7. Ícone da marca */
+
+.logo-icon {
+    animation: pawPrint 0.7s ease both;
+}
+
+/* 8. Campos do formulário */
+
+input,
+select,
+textarea {
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(65, 135, 85, 0.15);
+}
+
+/* 9. Perguntas frequentes */
+
+details {
+    transition: background-color 0.25s ease;
+}
+
+details summary {
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+details summary:hover {
+    color: #38804b;
+}
+
+/* 10. Elementos decorativos */
+
+.hero-image,
+.mission-image {
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.impact-card:hover .impact-icon,
+.help-card:hover .help-icon {
+    animation: float 0.8s ease-in-out;
+}
+
+/* 11. Ajustes para dispositivos móveis */
+
+@media (max-width: 768px) {
+    .hero-content,
+    .hero-image {
+        animation: fadeInUp 0.7s ease both;
+    }
+
+    .pet-card:hover,
+    .impact-card:hover,
+    .help-card:hover,
+    .value-card:hover,
+    .contact-card:hover,
+    .process-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* 12. Acessibilidade: respeita quem prefere menos animações */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
