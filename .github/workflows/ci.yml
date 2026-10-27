@@ -29,7 +29,9 @@ jobs:
           node-version: 22
 
       - name: Validar arquivos HTML
-        run: npx --yes html-validate@10 "*.html"
+        run: |
+          npm install --no-save html-validate@10
+          npx html-validate "*.html"
 
   testes:
     name: Testes do projeto
