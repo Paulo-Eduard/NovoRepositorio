@@ -1,0 +1,66 @@
+
+name: CD - Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lint-html:
+    name: Lint HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validar arquivos HTML
+        run: |
+          npm install --global npm@latest
+          npm install --no-save html-validate@10
+          npx html-validate "*.html"
+
+  testes:
+    name: Testes do projeto
+    runs-on: ubuntu-latest
+    needs: lint-html
+
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Executar testes
+        run: node tests/test-site.js
+
+  deploy:
+    name: Publicar no GitHub Pages
+    runs-on: ubuntu-latest
+    needs:
+      - lint-html
+      - testes
+
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Publicar site na branch gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          exclude_assets: ".github,tests,README.md,.gitignore"
