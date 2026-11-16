@@ -1,4 +1,4 @@
-name: CD - Deploy GitHub Pages
+﻿name: CD - Deploy GitHub Pages
 
 on:
   push:
@@ -14,7 +14,9 @@ jobs:
   ci:
     name: Validacoes (CI)
     uses: ./.github/workflows/ci.yml
-    secrets: inherit
+    secrets:
+      DEFECTDOJO_URL: ${{ secrets.DEFECTDOJO_URL }}
+      DEFECTDOJO_TOKEN: ${{ secrets.DEFECTDOJO_TOKEN }}
     permissions:
       contents: read
 
@@ -26,10 +28,10 @@ jobs:
       contents: write
     steps:
       - name: Baixar o codigo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Publicar site na branch gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
