@@ -1,52 +1,198 @@
-
-name: CI - Validacao do Projeto
+name: CI - Secure Pipeline (Lint, Testes, SAST, DAST)
 
 on:
   push:
     branches:
-      - main
       - "feature/**"
   pull_request:
     branches:
       - main
   workflow_dispatch:
+  # Reutilizado pelo deploy.yml (assim a main passa pelas mesmas validacoes)
+  workflow_call:
+    secrets:
+      DEFECTDOJO_URL:
+        required: false
+      DEFECTDOJO_TOKEN:
+        required: false
 
 permissions:
   contents: read
 
 jobs:
+  # ---------------------------------------------------------------
+  # 1) Lint HTML
+  # ---------------------------------------------------------------
   lint-html:
     name: Lint HTML
     runs-on: ubuntu-latest
-
     steps:
       - name: Baixar o codigo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
 
       - name: Validar arquivos HTML
         run: |
-          npm install --global npm@latest
           npm install --no-save html-validate@10
           npx html-validate "*.html"
 
+  # ---------------------------------------------------------------
+  # 2) Testes do projeto
+  # ---------------------------------------------------------------
   testes:
     name: Testes do projeto
     runs-on: ubuntu-latest
     needs: lint-html
-
     steps:
       - name: Baixar o codigo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
 
       - name: Executar testes
         run: node tests/test-site.js
+
+  # ---------------------------------------------------------------
+  # 3) SAST - Analise estatica do codigo (Semgrep)
+  #    Validacao: o job FALHA se houver qualquer finding (--error)
+  # ---------------------------------------------------------------
+  sast:
+    name: SAST (Semgrep)
+    runs-on: ubuntu-latest
+    needs: testes
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar Semgrep
+        run: pip install semgrep
+
+      - name: Executar Semgrep
+        run: |
+          mkdir -p reports
+          semgrep scan \
+            --config p/default \
+            --config p/javascript \
+            --config p/owasp-top-ten \
+            --metrics=off \
+            --json-output=reports/semgrep.json \
+            --error \
+            .
+
+      - name: Resumo do SAST
+        if: always()
+        run: |
+          if [ -f reports/semgrep.json ]; then
+            n=$(python3 -c "import json;print(len(json.load(open('reports/semgrep.json'))['results']))")
+            echo "### SAST (Semgrep): $n finding(s)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Publicar relatorio SAST
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: relatorio-sast-semgrep
+          path: reports/semgrep.json
+          if-no-files-found: warn
+
+  # ---------------------------------------------------------------
+  # 4) DAST - Analise dinamica (OWASP ZAP baseline)
+  #    O site e servido localmente e atacado/inspecionado pelo ZAP.
+  #    Validacao: regras marcadas como FAIL em .zap/rules.tsv quebram o job.
+  # ---------------------------------------------------------------
+  dast:
+    name: DAST (OWASP ZAP)
+    runs-on: ubuntu-latest
+    needs: testes
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Subir o site localmente
+        run: |
+          mkdir -p /tmp/site
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'tests' \
+                --exclude '.zap' --exclude 'docs' ./ /tmp/site/
+          cd /tmp/site
+          nohup python3 -m http.server 8080 > /tmp/http.log 2>&1 &
+          for i in $(seq 1 20); do
+            curl -fsS http://localhost:8080/index.html > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Site nao subiu" && cat /tmp/http.log && exit 1
+
+      - name: Executar OWASP ZAP Baseline
+        run: |
+          mkdir -p zap-out
+          cp .zap/rules.tsv zap-out/rules.tsv
+          chmod -R 777 zap-out
+          # -I: avisos (WARN) nao quebram; apenas regras FAIL do rules.tsv
+          docker run --rm --network host -v "$PWD/zap-out:/zap/wrk:rw" \
+            ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+            -t http://localhost:8080 \
+            -c rules.tsv \
+            -r zap-report.html \
+            -x zap-report.xml \
+            -J zap-report.json \
+            -I
+
+      - name: Publicar relatorios DAST
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: relatorio-dast-zap
+          path: zap-out/zap-report.*
+          if-no-files-found: warn
+
+  # ---------------------------------------------------------------
+  # 5) (Bonus +0.5) Vulnerability Management - DefectDojo
+  #    So executa o envio se os secrets estiverem configurados.
+  # ---------------------------------------------------------------
+  defectdojo:
+    name: Enviar para DefectDojo
+    runs-on: ubuntu-latest
+    needs: [sast, dast]
+    if: ${{ always() && (needs.sast.result != 'skipped' || needs.dast.result != 'skipped') }}
+    continue-on-error: true
+    steps:
+      - name: Baixar relatorios
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          path: reports
+        continue-on-error: true
+
+      - name: Importar no DefectDojo
+        env:
+          DD_URL: ${{ secrets.DEFECTDOJO_URL }}
+          DD_TOKEN: ${{ secrets.DEFECTDOJO_TOKEN }}
+          DD_PRODUCT: ${{ vars.DEFECTDOJO_PRODUCT || github.event.repository.name }}
+        run: |
+          if [ -z "$DD_URL" ] || [ -z "$DD_TOKEN" ]; then
+            echo "DefectDojo nao configurado (secrets DEFECTDOJO_URL/DEFECTDOJO_TOKEN). Etapa ignorada."
+            exit 0
+          fi
+          import() {
+            curl -fsS -X POST "$DD_URL/api/v2/import-scan/" \
+              -H "Authorization: Token $DD_TOKEN" \
+              -F "scan_type=$1" -F "file=@$2" \
+              -F "product_name=$DD_PRODUCT" \
+              -F "product_type_name=Research and Development" \
+              -F "engagement_name=CI-${GITHUB_RUN_ID}" \
+              -F "auto_create_context=true" -F "active=true" -F "verified=false" \
+              -F "commit_hash=${GITHUB_SHA}" -F "branch_tag=${GITHUB_REF_NAME}"
+          }
+          [ -f reports/relatorio-sast-semgrep/semgrep.json ] && import "Semgrep JSON Report" reports/relatorio-sast-semgrep/semgrep.json
+          [ -f reports/relatorio-dast-zap/zap-report.xml ] && import "ZAP Scan" reports/relatorio-dast-zap/zap-report.xml
+          exit 0

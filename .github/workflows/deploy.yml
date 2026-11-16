@@ -1,5 +1,4 @@
-
-name: CD - Deploy GitHub Pages
+﻿name: CD - Deploy GitHub Pages
 
 on:
   push:
@@ -8,59 +7,32 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  lint-html:
-    name: Lint HTML
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Baixar o codigo
-        uses: actions/checkout@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Validar arquivos HTML
-        run: |
-          npm install --global npm@latest
-          npm install --no-save html-validate@10
-          npx html-validate "*.html"
-
-  testes:
-    name: Testes do projeto
-    runs-on: ubuntu-latest
-    needs: lint-html
-
-    steps:
-      - name: Baixar o codigo
-        uses: actions/checkout@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Executar testes
-        run: node tests/test-site.js
+  # Pipeline segura completa (Lint -> Testes -> SAST -> DAST -> DefectDojo)
+  ci:
+    name: Validacoes (CI)
+    uses: ./.github/workflows/ci.yml
+    secrets:
+      DEFECTDOJO_URL: ${{ secrets.DEFECTDOJO_URL }}
+      DEFECTDOJO_TOKEN: ${{ secrets.DEFECTDOJO_TOKEN }}
+    permissions:
+      contents: read
 
   deploy:
     name: Publicar no GitHub Pages
     runs-on: ubuntu-latest
-    needs:
-      - lint-html
-      - testes
-
+    needs: ci
+    permissions:
+      contents: write
     steps:
       - name: Baixar o codigo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Publicar site na branch gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-          exclude_assets: ".github,tests,README.md,.gitignore"
+          exclude_assets: ".github,tests,.zap,docs,README.md,.gitignore"
