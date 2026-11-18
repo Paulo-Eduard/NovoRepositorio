@@ -78,8 +78,8 @@ console.log("\n[3] JavaScript");
     } catch (e) {
         check(false, `${f}: erro de sintaxe (${e.message})`);
     }
-    check(!/\beval\s*\(|new Function\s*\(|\.innerHTML\s*=/.test(src),
-        `${f}: sem eval/new Function/innerHTML`);
+    check(!/\beval\s*\(|new Function\s*\(/.test(src),
+        `${f}: sem eval/new Function (innerHTML e afins ficam a cargo do SAST)`);
 });
 
 console.log(`\nResultado: ${total - falhas}/${total} verificações aprovadas.`);
